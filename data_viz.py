@@ -88,11 +88,13 @@ def plot_corr_chart_from_csv(csv_path, x_col, y_col1, y_col2, window=5):
     df_plot['residuos'] = df_plot[y_col1] - df_plot[y_col2]
 
     # Cria a figura com subplots
-    fig = sp.make_subplots(rows=3, cols=1, subplot_titles=(y_col1, y_col2, 'Correlação Rolante', 'Resíduos'))
+    fig = sp.make_subplots(rows=3, cols=1, subplot_titles=(y_col1 + " and " + y_col2,  'Correlação Rolante', 'Resíduos'))
 
     # Adiciona os traços para os dois primeiros gráficos de dispersão
-    trace1 = go.Scatter(x=df_plot[x_col], y=df_plot[y_col1], mode='lines+markers', name=y_col1)
-    trace2 = go.Scatter(x=df_plot[x_col], y=df_plot[y_col2], mode='lines+markers', name=y_col2)
+    trace1 = go.Scatter(x=df_plot[x_col], y=df_plot[y_col1],
+                        mode='lines+markers', name=y_col1)
+    trace2 = go.Scatter(x=df_plot[x_col], y=df_plot[y_col2],
+                        mode='lines+markers', name=y_col2)
     fig.add_trace(trace1, row=1, col=1)
     fig.add_trace(trace2, row=1, col=1)
 
@@ -155,7 +157,7 @@ def plot_hybrid_chart_from_csv(csv_path, var_x, var_y, var_y_2,var_y_3, window=5
         x=df_plot[var_x],
         y=df_plot[var_y].astype(float),
         mode='lines+markers',
-        name=var_x
+        name=var_y
     )
     
     # Gráfico de Exportação venezuela
